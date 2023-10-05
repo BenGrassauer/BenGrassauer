@@ -13,6 +13,10 @@ body {
         border-color: white;
         border: thick solid;
     }
+    a {
+        color: white;
+        font-family: 'Times New Roman', Times, serif;
+    }
     p {
         color: grey;
     }
@@ -36,3 +40,13 @@ body {
         position: absolute;
         bottom: 50%;
     }
+    a{
+        transition: all 0.3s ease 0s;
+    }
+    a:hover{
+        color:black;
+    }
+    #dk.jpg {
+        background-image: url(dk.jpg);
+    }
+    
