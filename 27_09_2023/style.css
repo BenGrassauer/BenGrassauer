@@ -26,6 +26,7 @@ body {
         border:solid;
         font-size: 3em;
         transition: all 0.3s ease 0s;
+        position: absolute;
     }
     button:hover {
         transform: translateY(-7px);
@@ -33,12 +34,12 @@ body {
         background-color: white;
     }
     button#eins{
-        position: absolute;
         bottom: 62%;
+        text-align: left;
     }
     button#zwei {
-        position: absolute;
         bottom: 50%;
+        text-align: left;
     }
     a{
         transition: all 0.3s ease 0s;
@@ -46,7 +47,8 @@ body {
     a:hover{
         color:black;
     }
-    #dk.jpg {
-        background-image: url(dk.jpg);
+    img{
+        width: 1000px;
+        height: 1000px;
     }
     
