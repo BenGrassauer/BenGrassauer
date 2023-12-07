@@ -4,8 +4,10 @@ body {
 }
 .grid-container {
     display: grid;
-    grid-template-columns: 10% 55% 35%;
+    grid-template-columns: 8.5% 57% 35%;
     grid-template-rows: 10% 50% 40%;
+    margin-left: -8px;
+    margin-right: -8px;
   }
   .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
@@ -21,6 +23,7 @@ body {
   }
   header {
     text-align: center;
+    margin-top: -19px;
   }
   nav ul li {
     display: inline;
