@@ -3,7 +3,7 @@ class Calculator {
     this.beforeTextElement = beforeTextElement
     this.nowTextElement = nowTextElement
     this.clear()
-}
+};
 clear() {
     this.before = ' '
     this.now = ' '
