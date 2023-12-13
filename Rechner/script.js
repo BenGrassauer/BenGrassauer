@@ -9,11 +9,20 @@ class Calculator {
     this.now = "0";
     this.operation = undefined;
   }
+  load() {
+    this.now = this.quicksave;
+  }
+  save() {
+    this.quicksave = this.now;
+  }
   delete() {
     this.now = this.now.toString().slice(0, -1);
     if (this.now.toString().length === 0) {
       this.now = "0";
     }
+  }
+  selferding(self) {
+    this.now = this.now.toString() + self.toString();
   }
   appendNumber(number) {
     if (number === "." && this.now.includes(".")) return;
@@ -86,6 +95,9 @@ const numberButtons = document.querySelectorAll("[data-number]");
 const operationButtons = document.querySelectorAll("[data-operation]");
 const equalsButtons = document.querySelector("[data-equals]");
 const deleteButton = document.querySelector("[data-delete]");
+const selfButtons = document.querySelectorAll("[data-self]");
+const saveButton = document.querySelector("[data-save]");
+const loadButton = document.querySelector("[data-load]");
 const allClearButton = document.querySelector("[data-all-clear]");
 const beforeTextElement = document.querySelector("[data-before]");
 const nowTextElement = document.querySelector("[data-now]");
@@ -98,14 +110,26 @@ numberButtons.forEach((button) => {
     calculator.updateDisplay();
   });
 });
-
+loadButton.addEventListener("click", (button) => {
+  calculator.load();
+  calculator.updateDisplay();
+});
+saveButton.addEventListener("click", (button) => {
+  calculator.save();
+  calculator.updateDisplay();
+});
 operationButtons.forEach((button) => {
   button.addEventListener("click", () => {
     calculator.chooseOperation(button.innerText);
     calculator.updateDisplay();
   });
 });
-
+selfButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    calculator.selferding(button.innerText);
+    calculator.updateDisplay();
+  });
+});
 equalsButtons.addEventListener("click", (button) => {
   calculator.compute();
   calculator.updateDisplay();
