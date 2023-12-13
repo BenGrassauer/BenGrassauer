@@ -4,12 +4,6 @@ class Calculator {
     this.nowTextElement = nowTextElement;
     this.clear();
   }
-  quardier() {
-    const current = parseFloat(this.now);
-    {
-      this.now = current * current;
-    }
-  }
   clear() {
     this.before = "";
     this.now = "0";
@@ -28,7 +22,20 @@ class Calculator {
     }
   }
   selferding(self) {
-    this.now = this.now.toString() + self.toString();
+    const selferdingsbums = parseFloat(this.now);
+    switch (self) {
+      case "²":
+        this.now = selferdingsbums * selferdingsbums;
+        break;
+      case "sin":
+        this.now = Math.sin(selferdingsbums);
+        break;
+      case "cos":
+        this.now = Math.cos(selferdingsbums);
+        break;
+      default:
+        break;
+    }
   }
   appendNumber(number) {
     if (number === "." && this.now.includes(".")) return;
@@ -83,11 +90,11 @@ class Calculator {
     if (decimalDigits != null) {
       return `${integerDisplay}.${decimalDigits}`;
     } else {
-      return integerDigits;
+      return `${integerDisplay}`;
     }
   }
   updateDisplay() {
-    this.nowTextElement.innerText = this.getDisplayNumber(this.now);
+    this.nowTextElement.innerText = `${this.getDisplayNumber(this.now)}`;
     if (this.operation != null) {
       this.beforeTextElement.innerText = `${this.getDisplayNumber(
         this.before
@@ -99,12 +106,11 @@ class Calculator {
 }
 const numberButtons = document.querySelectorAll("[data-number]");
 const operationButtons = document.querySelectorAll("[data-operation]");
+const selfButtons = document.querySelectorAll("[data-self]");
 const equalsButtons = document.querySelector("[data-equals]");
 const deleteButton = document.querySelector("[data-delete]");
-const selfButtons = document.querySelectorAll("[data-self]");
 const saveButton = document.querySelector("[data-save]");
 const loadButton = document.querySelector("[data-load]");
-const quadratButton = document.querySelector("[data-quadrat]");
 const allClearButton = document.querySelector("[data-all-clear]");
 const beforeTextElement = document.querySelector("[data-before]");
 const nowTextElement = document.querySelector("[data-now]");
@@ -122,10 +128,6 @@ operationButtons.forEach((button) => {
     calculator.chooseOperation(button.innerText);
     calculator.updateDisplay();
   });
-});
-quadratButton.addEventListener("click", (button) => {
-  calculator.quadrier();
-  calculator.updateDisplay();
 });
 loadButton.addEventListener("click", (button) => {
   calculator.load();
@@ -145,12 +147,10 @@ equalsButtons.addEventListener("click", (button) => {
   calculator.compute();
   calculator.updateDisplay();
 });
-
 allClearButton.addEventListener("click", (button) => {
   calculator.clear();
   calculator.updateDisplay();
 });
-
 deleteButton.addEventListener("click", (button) => {
   calculator.delete();
   calculator.updateDisplay();
