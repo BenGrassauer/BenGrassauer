@@ -4,6 +4,12 @@ class Calculator {
     this.nowTextElement = nowTextElement;
     this.clear();
   }
+  quardier() {
+    const current = parseFloat(this.now);
+    {
+      this.now = current * current;
+    }
+  }
   clear() {
     this.before = "";
     this.now = "0";
@@ -98,6 +104,7 @@ const deleteButton = document.querySelector("[data-delete]");
 const selfButtons = document.querySelectorAll("[data-self]");
 const saveButton = document.querySelector("[data-save]");
 const loadButton = document.querySelector("[data-load]");
+const quadratButton = document.querySelector("[data-quadrat]");
 const allClearButton = document.querySelector("[data-all-clear]");
 const beforeTextElement = document.querySelector("[data-before]");
 const nowTextElement = document.querySelector("[data-now]");
@@ -110,6 +117,16 @@ numberButtons.forEach((button) => {
     calculator.updateDisplay();
   });
 });
+operationButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    calculator.chooseOperation(button.innerText);
+    calculator.updateDisplay();
+  });
+});
+quadratButton.addEventListener("click", (button) => {
+  calculator.quadrier();
+  calculator.updateDisplay();
+});
 loadButton.addEventListener("click", (button) => {
   calculator.load();
   calculator.updateDisplay();
@@ -117,12 +134,6 @@ loadButton.addEventListener("click", (button) => {
 saveButton.addEventListener("click", (button) => {
   calculator.save();
   calculator.updateDisplay();
-});
-operationButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    calculator.chooseOperation(button.innerText);
-    calculator.updateDisplay();
-  });
 });
 selfButtons.forEach((button) => {
   button.addEventListener("click", () => {
