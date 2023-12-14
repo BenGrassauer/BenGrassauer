@@ -15,26 +15,25 @@ class Calculator {
   save() {
     this.quicksave = this.now;
   }
+  runtersave() {
+    document.getElementById("savedropdown").classList.toggle("show");
+  }
+  onclick = function (event) {
+    if (!event.target.matches(".dropbtn")) {
+      var dropdowns = document.getElementsByClassName("dropdown-content-save");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains("show")) {
+          openDropdown.classList.remove("show");
+        }
+      }
+    }
+  };
   delete() {
     this.now = this.now.toString().slice(0, -1);
     if (this.now.toString().length === 0) {
       this.now = "0";
-    }
-  }
-  selferding(self) {
-    const selferdingsbums = parseFloat(this.now);
-    switch (self) {
-      case "²":
-        this.now = selferdingsbums * selferdingsbums;
-        break;
-      case "sin":
-        this.now = Math.sin(selferdingsbums);
-        break;
-      case "cos":
-        this.now = Math.cos(selferdingsbums);
-        break;
-      default:
-        break;
     }
   }
   appendNumber(number) {
@@ -74,6 +73,22 @@ class Calculator {
     this.now = computation;
     this.operation = undefined;
     this.before = "";
+  }
+  selferding(self) {
+    const selferdingsbums = parseFloat(this.now);
+    switch (self) {
+      case "²":
+        this.now = selferdingsbums * selferdingsbums;
+        break;
+      case "sin":
+        this.now = Math.sin(selferdingsbums);
+        break;
+      case "cos":
+        this.now = Math.cos(selferdingsbums);
+        break;
+      default:
+        break;
+    }
   }
   getDisplayNumber(number) {
     const stringNumber = number.toString();
@@ -129,6 +144,12 @@ operationButtons.forEach((button) => {
     calculator.updateDisplay();
   });
 });
+selfButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    calculator.selferding(button.innerText);
+    calculator.updateDisplay();
+  });
+});
 loadButton.addEventListener("click", (button) => {
   calculator.load();
   calculator.updateDisplay();
@@ -136,12 +157,6 @@ loadButton.addEventListener("click", (button) => {
 saveButton.addEventListener("click", (button) => {
   calculator.save();
   calculator.updateDisplay();
-});
-selfButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    calculator.selferding(button.innerText);
-    calculator.updateDisplay();
-  });
 });
 equalsButtons.addEventListener("click", (button) => {
   calculator.compute();

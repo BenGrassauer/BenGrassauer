@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background: linear-gradient(to right, red, orange);
+    zoom: 70%;
 }
 .grid-con {
     display: grid;
