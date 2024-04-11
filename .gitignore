@@ -1,3 +1,4 @@
 .pdf
 .doxc
 .config
+/node_modules
