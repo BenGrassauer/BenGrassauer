@@ -26,3 +26,8 @@ li {
     width: 250px;
     height: 250px;
 }
+button {
+    font-size: 2em;
+    background: linear-gradient(to left, cyan, blue);
+    border: solid;
+}
