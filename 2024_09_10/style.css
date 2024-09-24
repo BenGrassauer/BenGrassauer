@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    background: linear-gradient(to right, red, orange, yellow);
+}
+h1 {
+    color: green;
+    border: solid;
+    transition: 2s;
+    align-content: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+h1:hover {
+    color: darkblue;
+    font-size: 5em;
+    font-family: 'Times New Roman', Times, serif;
+}
+h2 {
+    color: white;
+    background: linear-gradient(to left, brown, rgba(165, 42, 42, 0.471), black);
+    font-size: 4em;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: 0.5s;
+}
+h2:hover {
+    font-size:4.1em;
+    color: lightgray;
+}
+button {
+    color: red;
+    background: radial-gradient(darkblue, purple);
+    font-size: 3em;
+    border: red, thick;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: 0.5s;
+}
+button:hover {
+    background: linear-gradient(to left, purple, darkblue);
+    font-size: 4em;
+}
