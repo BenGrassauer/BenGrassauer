@@ -26,8 +26,17 @@ li {
     width: 250px;
     height: 250px;
 }
-button {
+.Button {
     font-size: 2em;
     background: linear-gradient(to left, cyan, blue);
     border: solid;
+    background-size: 200%;
+    background-position: left;
+    transition: 1s;
+}
+
+.Button:hover {
+    background-position: right;
+    transform: translateY(-7px);
+    transform: translateX(7px);
 }
