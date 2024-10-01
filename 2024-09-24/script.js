@@ -9,7 +9,7 @@ function font() {
       break;
     case 2:
       document.getElementById("ul").style.fontFamily = "monospace";
-      document.getElementById("ul").style.webkitTextStroke = "1px black";
+      // document.getElementById("ul").style.webkitTextStroke = "1px black";
       a = a + 1;
       break;
     case 3:
