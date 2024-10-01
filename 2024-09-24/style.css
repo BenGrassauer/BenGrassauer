@@ -26,7 +26,7 @@ li {
     width: 250px;
     height: 250px;
 }
-.Button {
+button {
     font-size: 2em;
     background: linear-gradient(to left, cyan, blue);
     border: solid;
@@ -35,7 +35,7 @@ li {
     transition: 1s;
 }
 
-.Button:hover {
+button:hover {
     background-position: right;
     transform: translateY(-7px);
     transform: translateX(7px);
