@@ -1,8 +1,7 @@
 let a = 1;
-function Times() {
+function font() {
   switch (a) {
     case 1:
-      document.getElementById("ul").style.fontWeight = "default";
       document.getElementById("ul").style.fontFamily = "Times New Roman";
       document.getElementById("ul").style.webkitTextStroke = "0px black";
       a = a + 1;
@@ -20,6 +19,7 @@ function Times() {
       break;
   }
 }
+
 const Font = document.getElementById("Krass");
 Font.addEventListener("click", (button) => {
   Times();
