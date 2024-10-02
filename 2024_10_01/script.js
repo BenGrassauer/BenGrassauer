@@ -12,9 +12,9 @@ function automat() {
       textausgabe = "Sie haben €300 abgehoben";
       break;
     default:
-      if (eingabe % 10 === 0) {
+      if (eingabe % 10 === 0 && eingabe <= 400) {
         textausgabe = `Sie haben €${eingabe} abgehoben`;
-      }
+      } else textausgabe = "Geben Sie einen gültigen Betrag ein";
       break;
   }
   document.getElementById("Ausgabe").innerHTML = textausgabe;
