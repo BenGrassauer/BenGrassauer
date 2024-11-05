@@ -9,10 +9,10 @@ function liste() {
     "</td><td style='border: solid;'>" +
     preis.innerHTML +
     "</td></tr>";
-  summe.innerHTML = x =
+  x =
     parseFloat(summe.innerHTML.replace("Gesamtsumme: ", "").trim()) +
     parseFloat(blumen.value);
-  summe.innerHTML = "Gesamtsumme: " + x;
+  summe.innerHTML = "Gesamtsumme: " + x + "€";
 }
 
 function bestellung() {
