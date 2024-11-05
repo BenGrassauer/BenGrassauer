@@ -24,9 +24,7 @@
         <option value="4€">Edelweiß</option>
     </select>
     <label for="button" id="preis">2€</label>
-    <button type="button" id="button" onclick="liste()">Hinzufügen</button> <br>
-    <!--<button type="button" id="button" onclick="document.getElementById('tbl').innerHTML += '<tr><td style=\'border: solid;\'>document.getElementById(\'blumen\').options[blumen.selectedIndex]</td><td style=\'border: solid;\'>Preis</td></tr>';">Hinzufügen</button><br>
--->
+    <button type="button" id="button">Hinzufügen</button> <br>
     <textarea name="Anmerkung" id="Anmerkung" cols="40" rows="10">Hallo,
 ich hätte noch folgende Anmerkung:
     </textarea>
@@ -38,32 +36,12 @@ ich hätte noch folgende Anmerkung:
     <br>
     <br>
     <h2>Warenkorb</h2>
-    <table id="tbl" style="border-collapse: separate; border: solid, black;">
+    <table id="Korb" style="border-collapse: separate; border: solid, black;">
         <tr >
             <th style="border: solid;">Produkte</td>
             <th style="border: solid;">Preis</td>
         </tr>
-    </table>
-    <p id="sum">summe:</p>
-    <p id="summe">0</p>
-<!--<script>
-//function addProduct() {
-//    const blumenSelect = document.getElementById('blumen');
-//    const selectedOption = blumenSelect.options[blumenSelect.selectedIndex];
-//    const productName = selectedOption.text;
-//    const productPrice = parseFloat(selectedOption.value.replace('€', '').replace(',', '.'));
-//
-//    const table = document.getElementById('tbl');
-//    const newRow = table.insertRow();
-//    const cell1 = newRow.insertCell(0);
-//    const cell2 = newRow.insertCell(1);
-//    cell1.textContent = productName;
-//    cell2.textContent = selectedOption.value;
-//
-//    const sumElement = document.getElementById('summe');
-//    const currentSum = parseFloat(sumElement.textContent);
-//    sumElement.textContent = (currentSum + productPrice).toFixed(2);
-//}-->
+    </table><p id="summe">Gesamtsumme: 0</p>
 </script>
 </body>
 </html>

@@ -1,5 +1,7 @@
+const summe = document.getElementById("summe");
+
 function liste() {
-  document.getElementById("tbl").innerHTML +=
+  document.getElementById("Korb").innerHTML +=
     "<tr><td style='border: solid;'>" +
     document.getElementById("blumen").options[
       document.getElementById("blumen").selectedIndex
@@ -7,13 +9,15 @@ function liste() {
     "</td><td style='border: solid;'>" +
     preis.innerHTML +
     "</td></tr>";
-  document.getElementById("summe").innerHTML =
-    Number(document.getElementById("summe").innerHTML) +
+  summe.innerHTML = x =
+    parseFloat(summe.innerHTML.replace("Gesamtsumme: ", "").trim()) +
     parseFloat(blumen.value);
+  summe.innerHTML = "Gesamtsumme: " + x;
 }
+
 function bestellung() {
   if (
-    document.getElementById("tbl").innerHTML ===
+    document.getElementById("Korb").innerHTML ===
     `
         <tbody><tr>
             <th style="border: solid;">Produkte
@@ -26,3 +30,6 @@ function bestellung() {
     alert("Ihre Blumen wurden bestellt");
   }
 }
+document.getElementById("button").addEventListener("click", function () {
+  liste();
+});
