@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testding</title>
+  </head>
+  <body>
+    <input placeholder="Max Mustermann" inputmode="text" id="Max" />
+    <select name="Obst" id="Obst">
+      <option value=""></option>
+      <option value="Apfel">Apfel</option>
+      <option value="Birne">Birne</option>
+      <option value="Marille">Marille</option>
+      <option value="Kirsche">Kirsche</option>
+    </select>
+    <button id="Abstimmen" onclick="code()">Abstimmen</button>
+  </body>
+</html>
+<script>
+  const x = 2;
+  const input = document.getElementById("Max");
+  let obstauswahl = document.getElementById("Obst").value;
+  function code() {
+    obstauswahl = document.getElementById("Obst").value;
+    if (input.value.length < 5) {
+      alert("Das Namensfeld muss Mindestens 5 Zeichen enthalten");
+      obstauswahl = document.getElementById("Obst").value;
+    } else {
+      obstauswahl = document.getElementById("Obst").value;
+      if (
+        obstauswahl == "Apfel" ||
+        obstauswahl == "Birne" ||
+        obstauswahl == "Marille" ||
+        obstauswahl == "Kirsche"
+      ) {
+        obstauswahl = document.getElementById("Obst").value;
+        alert(
+          `Sie ${input.value} haben das Obststück ${
+            document.getElementById("Obst").value
+          } gekauft`
+        );
+      } else {
+        obstauswahl = document.getElementById("Obst").value;
+        alert("Sie müssen etwas auswählen");
+      }
+    }
+  }
+</script>
