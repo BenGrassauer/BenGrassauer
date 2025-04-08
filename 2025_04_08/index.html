@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blumengeschäft</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Blumengeschäft</h1>
+    <br>
+    <br>
+    <form action="" oninput="">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" placeholder="Max Musterman"><br>
+    <label for="email">E-Mail:</label>
+    <input type="email" name="email" id="email" placeholder="Max.Musterman@spengergasse.at" style="width: 250px"><br>
+    <label for="blumen">Produkte</label>
+    <select name="blumen" id="blumen" oninput="preis.innerHTML = blumen.value">
+        <option value="2€">Sonnenblume</option>
+        <option value="2.50€">Tulpe</option>
+        <option value="3€">Lilie</option>
+        <option value="1.50€">Rose</option>
+        <option value="4€">Edelweiß</option>
+    </select>
+    <label for="button" id="preis">2€</label>
+    <button type="button" id="button">Hinzufügen</button> <br>
+    <textarea name="Anmerkung" id="Anmerkung" cols="40" rows="10"></textarea>
+    <br>
+    <button type="submit" onclick="bestellung()">Bestellen</button>
+    </form>
+    <h2>Warenkorb</h2>
+    <table id="Korb" style="border-collapse: separate; border: solid, black;">
+        <tr >
+            <th style="border: solid;">Produkte</td>
+            <th style="border: solid;">Preis</td>
+        </tr>
+    </table><p id="summe">Gesamtsumme: 0.00</p>
+</script>
+</body>
+</html>
