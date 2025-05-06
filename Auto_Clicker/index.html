@@ -9,7 +9,7 @@
   <body>
     <div class="grid-con">
       <div class="left">
-        <button class="leftupgrades" onclick="motor()">
+        <button class="leftupgrades" onmousedown="upgrade(0, 0.1, 0.1, false)">
           <table>
             <tr>
               <th>
@@ -27,24 +27,40 @@
             </tr>
           </table>
         </button>
+        <button class="leftupgrades" onmousedown="upgrade(1, 1, 3, false)">
+          <table>
+            <tr>
+              <th>
+                <img src="car-battery-svgrepo-com.svg" width="150" alt="" />
+              </th>
+              <th class="upgradePreis">200 Autos</th>
+            </tr>
+            <tr>
+              <th class="UpgradeMenge">0</th>
+              <th class="text">Baterien</th>
+            </tr>
+          </table>
+        </button>
       </div>
       <div class="middle">
         <center>
           <h1 id="Autos">Autos: 0</h1>
           <h1 id="bonus">1 Auto/click</h1>
+          <h1 id="SekundenBonus">0 Autos/Sekunde</h1>
+          <h1 id="cps">aps: 0</h1>
         </center>
-        <div onclick="autoClick()" id="bild" class="bild">
+        <div onmousedown="autoClick()" id="bild" class="bild">
           <img
             id="Auto"
-            width="300"
-            height="300"
+            width="400"
+            height="400"
             src="car-svgrepo-com.svg"
             alt="Auto"
           />
         </div>
       </div>
       <div class="right">
-        <button class="rightupgrades" onclick="pedal()">
+        <button class="rightupgrades" onmousedown="upgrade(2, 1, 5, true)">
           <table>
             <tr>
               <th>
@@ -63,6 +79,23 @@
           </table>
         </button>
         <br />
+        <button
+          class="rightupgrades"
+          onmousedown="upgrade(3, false, 500, true)"
+        >
+          <table>
+            <tr>
+              <th>
+                <img src="wrench-svgrepo-com.svg" width="150" alt="" />
+              </th>
+              <th class="upgradePreis">1000 Autos</th>
+            </tr>
+            <tr>
+              <th class="UpgradeMenge">0</th>
+              <th class="text">Schraubschlüssel</th>
+            </tr>
+          </table>
+        </button>
       </div>
     </div>
   </body>
