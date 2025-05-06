@@ -7,11 +7,63 @@
     <script defer src="script.js"></script>
   </head>
   <body>
-    <center>
-      <h1 id="Autos">Autos: 0</h1>
-      <div onclick="autoClick()" id="bild" class="bild">
-        <img width="300" height="300" src="car-svgrepo-com.svg" alt="Auto" />
+    <div class="grid-con">
+      <div class="left">
+        <button class="leftupgrades" onclick="motor()">
+          <table>
+            <tr>
+              <th>
+                <img
+                  src="car-engine-parts-svgrepo-com.svg"
+                  width="150"
+                  alt=""
+                />
+              </th>
+              <th class="upgradePreis">20 Autos</th>
+            </tr>
+            <tr>
+              <th class="UpgradeMenge">0</th>
+              <th class="text">Motoren</th>
+            </tr>
+          </table>
+        </button>
       </div>
-    </center>
+      <div class="middle">
+        <center>
+          <h1 id="Autos">Autos: 0</h1>
+          <h1 id="bonus">1 Auto/click</h1>
+        </center>
+        <div onclick="autoClick()" id="bild" class="bild">
+          <img
+            id="Auto"
+            width="300"
+            height="300"
+            src="car-svgrepo-com.svg"
+            alt="Auto"
+          />
+        </div>
+      </div>
+      <div class="right">
+        <button class="rightupgrades" onclick="pedal()">
+          <table>
+            <tr>
+              <th>
+                <img
+                  src="accelerator-brake-car-svgrepo-com.svg"
+                  width="150"
+                  alt=""
+                />
+              </th>
+              <th class="upgradePreis">10 Autos</th>
+            </tr>
+            <tr>
+              <th class="UpgradeMenge">0</th>
+              <th class="text">Pedale</th>
+            </tr>
+          </table>
+        </button>
+        <br />
+      </div>
+    </div>
   </body>
 </html>

@@ -1,3 +1,56 @@
 body {
     align-items: center;
+    margin: 0;
+    font-family: sans-serif;
+    font-weight: 400;
+}
+h1 {
+    margin:auto;
+}
+button {
+    height: 220px;
+    width: 520px;
+    justify-content: center;
+    align-content: center;
+    margin: 10px;
+    border-color: orange;
+    border-width: 10px;
+    border-radius: 20px;
+    background: linear-gradient(to right, white, antiquewhite);
+}
+.rightupgrades {
+    margin-left: 28%;
+}
+.leftupgrades {
+    background: linear-gradient(to left, white, antiquewhite);
+}
+th.text {
+    font-size: 2em;
+    text-align: left;
+}
+.upgradePreis {
+    font-size: 4em;
+    color: red;
+}
+.grid-con {
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    height: 100%;
+}
+.middle{
+    margin: 10px auto 0 auto;
+}
+.left {
+    background-color: red;
+}
+th.UpgradeMenge {
+    font-size: 2em;
+    text-align: right;
+}
+.centertext {
+    font-size: 1em;
+    text-align: center;
+}
+.right {
+    background-color: red;
 }
