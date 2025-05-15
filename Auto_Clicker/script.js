@@ -1,52 +1,61 @@
+const upgradePreiseDOM = document.getElementsByClassName("upgradePreis");
+const UpgradeAnzahlDOM = document.getElementsByClassName("upgradeMenge");
 let loopsecondid;
 let loopfirstid;
-let AutoAnzahl = 0;
-let UpgradeAnzahl = [0, 0, 0, 0];
-let Pedalanzahl = 0;
-let bonus = 1;
-let SekundenBonus = 0;
-let UpgradeAnzahlDOM = document.getElementsByClassName("upgradeMenge");
-let upgradePreiseDOM = document.getElementsByClassName("upgradePreis");
-let upgradePreise = [20, 200, 10, 1000];
-let Inkremente = [2, 20, 30, 1000];
+let achievflag1 = true;
+let achievflag2 = true;
 let cps = 0;
 let cpsflag = true;
-
-//function setup() {
-//  for (let i = 0; i < UpgradeAnzahlDOM.length; i++) {
-//    UpgradeAnzahl[i] = 0;
-//  }
-//}
+let Speicherobj = {};
+addEventListener("beforeunload", () => {
+  localStorage.setItem("Speicherobj", JSON.stringify(Speicherobj));
+});
 
 function render() {
   document.getElementById("Autos").innerHTML =
-    "Autos: " + Math.floor(AutoAnzahl * 10) / 10;
+    "Autos: " + Math.floor(Speicherobj.AutoAnzahl * 10) / 10;
   document.getElementById("SekundenBonus").innerHTML =
-    Math.floor(SekundenBonus * 10) / 10 + " Autos/Sekunde";
-  if (bonus > 1) {
-    document.getElementById("bonus").innerHTML = bonus + " Autos/click";
+    Math.floor(Speicherobj.SekundenBonus * 10) / 10 + " Autos/Sekunde";
+  if (Speicherobj.bonus > 1) {
+    document.getElementById("bonus").innerHTML =
+      Speicherobj.bonus + " Autos/click";
   }
   for (let i = 0; i < upgradePreiseDOM.length; i++) {
-    upgradePreiseDOM[i].innerHTML = upgradePreise[i] + " Autos";
-    UpgradeAnzahlDOM[i].innerHTML = UpgradeAnzahl[i];
-    if (upgradePreise[i] > AutoAnzahl) {
+    upgradePreiseDOM[i].innerHTML = Speicherobj.upgradePreise[i] + " Autos";
+    UpgradeAnzahlDOM[i].innerHTML = Speicherobj.UpgradeAnzahl[i];
+    if (Speicherobj.upgradePreise[i] > Speicherobj.AutoAnzahl) {
       upgradePreiseDOM[i].style.color = "red";
     } else {
       upgradePreiseDOM[i].style.color = "green";
     }
   }
-  if (AutoAnzahl > 1000) {
+  if (Speicherobj.AutoAnzahl > 1000 && achievflag1) {
     alert("DU HAST 1000 COOKIES ERREICHT!!! DU BIS ECHT HART!!!");
+    achievflag1 = false;
   }
-  if (UpgradeAnzahl[3] == 10) {
+  if (Speicherobj.UpgradeAnzahl[3] == 10 && achievflag2) {
     alert(
       "DU HAST ALLES GESCHAFFT!!! WARTE AUF DAS NÄCHSTE UPDATE FÜR LENKRÄDER!!!"
     );
+    achievflag2 = false;
   }
 }
 
+if (JSON.parse(localStorage.Speicherobj).AutoAnzahl == undefined) {
+  Speicherobj = {
+    AutoAnzahl: 0,
+    UpgradeAnzahl: [0, 0, 0, 0],
+    bonus: 1,
+    SekundenBonus: 0,
+    upgradePreise: [20, 200, 10, 1000],
+    Inkremente: [2, 20, 30, 1000],
+  };
+} else {
+  Speicherobj = JSON.parse(localStorage.getItem("Speicherobj"));
+  render();
+}
 function autosProSekunde() {
-  AutoAnzahl += SekundenBonus;
+  Speicherobj.AutoAnzahl += Speicherobj.SekundenBonus;
   render();
 }
 
@@ -67,12 +76,13 @@ function autoGross() {
 }
 
 function autoClick() {
-  AutoAnzahl += bonus;
+  Speicherobj.AutoAnzahl += Speicherobj.bonus;
   cps++;
   if (cpsflag) {
     cpsflag = false;
     setTimeout(() => {
-      document.getElementById("cps").innerHTML = "aps: " + cps * bonus;
+      document.getElementById("cps").innerHTML =
+        "aps: " + cps * Speicherobj.bonus;
       cps = 0;
       cpsflag = true;
     }, 1000);
@@ -91,20 +101,21 @@ function loopsecond() {
   loopsecondid = setTimeout(loopfirst, 200);
 }
 function upgrade(index, bonuszusatz, inkrementationszusatz, click) {
-  if (AutoAnzahl >= upgradePreise[index]) {
-    UpgradeAnzahl[index]++;
-    AutoAnzahl -= upgradePreise[index];
+  if (Speicherobj.AutoAnzahl >= Speicherobj.upgradePreise[index]) {
+    Speicherobj.UpgradeAnzahl[index]++;
+    Speicherobj.AutoAnzahl -= Speicherobj.upgradePreise[index];
     if (click) {
       if (bonuszusatz == false) {
-        SekundenBonus *= 2;
+        Speicherobj.SekundenBonus *= 2;
       } else {
-        bonus += bonuszusatz;
+        Speicherobj.bonus += bonuszusatz;
       }
     } else {
-      SekundenBonus += bonuszusatz;
+      Speicherobj.SekundenBonus += bonuszusatz;
     }
-    Inkremente[index] += inkrementationszusatz;
-    upgradePreise[index] += Inkremente[index];
+    Speicherobj.Inkremente[index] += inkrementationszusatz;
+    Speicherobj.upgradePreise[index] +=
+      Math.round(Speicherobj.Inkremente[index] * 10) / 10;
   }
   render();
 }
