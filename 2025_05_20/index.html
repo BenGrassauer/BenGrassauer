@@ -1,0 +1,62 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="https://placebear.com/300/500" width="300" height="500" alt="" />
+    <div id="ip"></div>
+    <button onclick="chucknorrisjoke()">Generate a juck norris joke</button>
+    <div id="Witz"></div>
+    <input id="input" type="text" placeholder="Eurobetrag eingeben" />
+    <input
+      id="Start"
+      type="text"
+      placeholder="Startwährung eingeben. z.B. USD"
+    />
+    <input id="end" type="text" placeholder="Endwährung eingeben. z.B. EUR" />
+    <button onclick="convert()">convert</button>
+    <div id="USD"></div>
+    <div>Alle "Geschlechtslosen" Rick & Morty charactere</div>
+    <div id="rick"></div>
+  </body>
+  <script>
+    fetch(`http://ip-api.com/json`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        document.getElementById("ip").innerHTML = data.query;
+      });
+    function chucknorrisjoke() {
+      fetch(`https://api.chucknorris.io/jokes/random`)
+        .then((resp) => resp.json())
+        .then((data) => {
+          document.getElementById("Witz").innerHTML = data.value;
+        });
+    }
+    function convert() {
+      fetch(
+        `https://api.frankfurter.app/latest?amount=${
+          document.getElementById("input").value
+        }&from=${document.getElementById("Start").value}&to=${
+          document.getElementById("end").value
+        }`
+      )
+        .then((resp) => resp.json())
+        .then((data) => {
+          document.getElementById("USD").innerHTML =
+            data.rates[document.getElementById("end").value];
+        });
+    }
+    let chararray = [];
+    fetch(`https://rickandmortyapi.com/api/character/?gender=unknown`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        for (let i = 0; i < data.results.length; i++) {
+          let temp = String(i);
+          chararray[i] = data.results[temp].name;
+        }
+        document.getElementById("rick").innerHTML = chararray;
+      });
+  </script>
+</html>
