@@ -13,9 +13,9 @@ addEventListener("beforeunload", () => {
 
 function render() {
   document.getElementById("Autos").innerHTML =
-    "Autos: " + Math.floor(Speicherobj.AutoAnzahl * 10) / 10;
+    "Autos: " + Math.round(Speicherobj.AutoAnzahl * 10) / 10;
   document.getElementById("SekundenBonus").innerHTML =
-    Math.floor(Speicherobj.SekundenBonus * 10) / 10 + " Autos/Sekunde";
+    Math.round(Speicherobj.SekundenBonus * 10) / 10 + " Autos/Sekunde";
   if (Speicherobj.bonus > 1) {
     document.getElementById("bonus").innerHTML =
       Speicherobj.bonus + " Autos/click";
